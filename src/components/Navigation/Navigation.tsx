@@ -5,18 +5,26 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { routes } from '../../utils/constants/routes';
+import { useNavigate } from 'react-router-dom';
 
 export const Navigation = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
     null
   );
+  const navigate = useNavigate();
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleHomeClick = () => {
+    setAnchorEl(null);
+    navigate(routes.home);
   };
 
   return (
@@ -35,9 +43,9 @@ export const Navigation = () => {
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
+          onClose={handleClose}
         >
-          <MenuItem onClick={handleMenuClose}>Home</MenuItem>
+          <MenuItem onClick={handleHomeClick}>Home</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
