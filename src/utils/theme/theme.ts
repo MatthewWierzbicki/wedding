@@ -10,6 +10,29 @@ export const theme = createTheme({
         },
       },
     },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          width: '100%', // Mobile width
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          '@media (min-width:600px)': {
+            // Desktop width
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            width: '350px',
+          },
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          color: 'black',
+          fontFamily: ['Montserrat', 'sans-serif'].join(','),
+        },
+      },
+    },
   },
   typography: {
     fontFamily: ['Montserrat', 'sans-serif'].join(','),

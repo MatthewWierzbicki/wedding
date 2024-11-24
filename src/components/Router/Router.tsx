@@ -1,14 +1,16 @@
 import React from 'react';
-
-import { RouterProvider, createBrowserRouter } from 'react-router';
-import { Home } from '../../pages/Home/Home';
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-]);
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from '@pages/Home/Home';
+import { routes } from '@utils/constants/routes';
+import { Navigation } from '@components/Navigation/Navigation';
 
 export const Router = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <Routes>
+        <Route path={routes.home} element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };

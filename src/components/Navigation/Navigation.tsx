@@ -3,27 +3,30 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { routes } from '../../utils/constants/routes';
+import CloseIcon from '@mui/icons-material/Close';
+import { routes } from '@utils/constants/routes';
 import { useNavigate } from 'react-router-dom';
+import Drawer from '@mui/material/Drawer';
+import ListItemButton from '@mui/material/ListItemButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
+import { useIsMobile } from '@utils/hooks/useIsMobile';
 
 export const Navigation = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
   const navigate = useNavigate();
-
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const isMobile = useIsMobile();
+  const handleMenuClick = () => {
+    setDrawerOpen(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setDrawerOpen(false);
   };
 
   const handleHomeClick = () => {
-    setAnchorEl(null);
+    setDrawerOpen(false);
     navigate(routes.home);
   };
 
@@ -35,18 +38,52 @@ export const Navigation = () => {
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2 }}
+          sx={{
+            mr: 2,
+            transition: 'transform 0.3s',
+            transform: drawerOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+          }}
           onClick={handleMenuClick}
         >
           <MenuIcon />
         </IconButton>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
+        <Drawer
+          open={drawerOpen}
           onClose={handleClose}
+          anchor={isMobile ? 'bottom' : 'left'}
+          sx={isMobile ? { borderRadius: 10 } : undefined}
         >
-          <MenuItem onClick={handleHomeClick}>Home</MenuItem>
-        </Menu>
+          <Toolbar sx={{ justifyContent: 'space-between' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                flexGrow: 1,
+                textAlign: 'center',
+                color: 'common.black',
+              }}
+            >
+              Menu
+            </Typography>
+            {!isMobile && (
+              <IconButton
+                size="large"
+                edge="end"
+                color="inherit"
+                aria-label="close"
+                onClick={handleClose}
+              >
+                <CloseIcon />
+              </IconButton>
+            )}
+          </Toolbar>
+          <List>
+            <ListItem>
+              <ListItemButton onClick={handleHomeClick}>
+                Home
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Drawer>
       </Toolbar>
     </AppBar>
   );
