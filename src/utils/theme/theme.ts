@@ -32,6 +32,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontFamily: ['Montserrat', 'sans-serif'].join(','),
+        },
+      },
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {

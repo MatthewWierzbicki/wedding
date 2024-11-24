@@ -54,11 +54,19 @@ export const Introduction = ({ detailsRef }: IntroductionProps) => {
           </Typography>
         </Box>
         <IconButton
+          onClick={handleScrollToAccommodations}
           sx={{
             position: 'absolute',
             bottom: 20,
+            animation: 'shake 0.5s 0.5s forwards',
+            '@keyframes shake': {
+              '0%': { transform: 'rotate(0deg)' },
+              '25%': { transform: 'rotate(-10deg)' },
+              '50%': { transform: 'rotate(10deg)' },
+              '75%': { transform: 'rotate(-10deg)' },
+              '100%': { transform: 'rotate(0deg)' },
+            },
           }}
-          onClick={handleScrollToAccommodations}
         >
           <Box
             component='img'
