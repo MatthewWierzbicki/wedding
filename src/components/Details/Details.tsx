@@ -1,8 +1,11 @@
 import { Stack, Typography } from '@mui/material';
 
-export const Details = () => {
+interface DetailsProps {
+  detailsRef: React.RefObject<HTMLDivElement>;
+}
+export const Details = ({ detailsRef }: DetailsProps) => {
   return (
-    <Stack sx={{ backgroundColor: '#f5ebe0', p: 6, gap: 4 }}>
+    <Stack ref={detailsRef} sx={{ backgroundColor: '#f5ebe0', p: 6, gap: 4 }}>
       <Typography variant='h4' sx={{ color: 'black' }}>
         The Details
       </Typography>

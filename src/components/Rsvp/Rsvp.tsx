@@ -3,11 +3,12 @@ import { Box, IconButton } from '@mui/material';
 import Sylvia from '@assets/sylvia.png';
 import { useIsMobile } from '@utils/hooks/useIsMobile';
 import RsvpSvg from '@assets/rsvp.svg'; // Assuming the SVG is imported like this
+import { RsvpDialog } from '../RsvpDialog/RsvpDialog';
 
 export const Rsvp = () => {
   const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
-
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -62,6 +63,7 @@ export const Rsvp = () => {
               backgroundColor: 'transparent',
             },
           }}
+          onClick={() => setIsDialogOpen(true)}
         >
           <Box
             component='img'
@@ -72,6 +74,10 @@ export const Rsvp = () => {
           />
         </IconButton>
       )}
+      <RsvpDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+      />
     </Box>
   );
 };

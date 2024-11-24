@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Stack } from '@mui/material';
 import { Details } from '@components/Details/Details';
 import { Introduction } from '@components/Introduction/Introduction';
 import { Accommodations } from '@components/Accommodations/Accommodations';
 import { Rsvp } from '@components/Rsvp/Rsvp';
 export const Home = () => {
+  const detailsRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <Stack
@@ -15,8 +16,8 @@ export const Home = () => {
           alignItems: 'center',
         }}
       >
-        <Introduction />
-        <Details />
+        <Introduction detailsRef={detailsRef} />
+        <Details detailsRef={detailsRef} />
         <Rsvp />
         <Accommodations />
       </Stack>

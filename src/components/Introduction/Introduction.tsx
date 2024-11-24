@@ -1,13 +1,23 @@
 import React from 'react';
 
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
 import SayYes from '@assets/say-yes.jpeg';
 import { useIsMobile } from '@utils/hooks/useIsMobile';
 import Cat from '@assets/cat.svg';
 import ArrowDown from '@assets/arrow-down.svg';
 
-export const Introduction = () => {
+interface IntroductionProps {
+  detailsRef: React.RefObject<HTMLDivElement>;
+}
+
+export const Introduction = ({ detailsRef }: IntroductionProps) => {
   const isMobile = useIsMobile();
+  const handleScrollToAccommodations = () => {
+    detailsRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
   return (
     <Box
       sx={{
@@ -43,18 +53,21 @@ export const Introduction = () => {
             Matt + Sylvia
           </Typography>
         </Box>
-
-        <Box
+        <IconButton
           sx={{
             position: 'absolute',
             bottom: 20,
           }}
-          component='img'
-          src={ArrowDown}
-          alt='arrowDown'
-          width={100}
-          height={100}
-        />
+          onClick={handleScrollToAccommodations}
+        >
+          <Box
+            component='img'
+            src={ArrowDown}
+            alt='arrowDown'
+            width={100}
+            height={100}
+          />
+        </IconButton>
       </Stack>
     </Box>
   );

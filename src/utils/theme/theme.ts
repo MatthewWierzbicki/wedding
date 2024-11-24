@@ -25,6 +25,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          padding: 40,
+        },
+      },
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {

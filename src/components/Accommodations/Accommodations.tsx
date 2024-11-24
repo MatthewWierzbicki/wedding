@@ -1,5 +1,6 @@
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
+
 export const Accommodations = () => {
   return (
     <Stack sx={{ backgroundColor: '#ffe5d9', px: 6, py: 8, gap: 4 }}>
