@@ -5,19 +5,21 @@ import SayYes from '@assets/say-yes.jpeg';
 import { useIsMobile } from '@utils/hooks/useIsMobile';
 import Cat from '@assets/cat.svg';
 import ArrowDown from '@assets/arrow-down.svg';
-
+import { Clouds } from '@components/Clouds/Clouds';
 interface IntroductionProps {
   detailsRef: React.RefObject<HTMLDivElement>;
 }
 
 export const Introduction = ({ detailsRef }: IntroductionProps) => {
   const isMobile = useIsMobile();
+
   const handleScrollToAccommodations = () => {
     detailsRef.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
   };
+
   return (
     <Box
       sx={{
@@ -53,6 +55,7 @@ export const Introduction = ({ detailsRef }: IntroductionProps) => {
             Matt + Sylvia
           </Typography>
         </Box>
+
         <IconButton
           onClick={handleScrollToAccommodations}
           sx={{
@@ -76,6 +79,7 @@ export const Introduction = ({ detailsRef }: IntroductionProps) => {
             height={100}
           />
         </IconButton>
+        <Clouds />
       </Stack>
     </Box>
   );
