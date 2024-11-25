@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog } from '@mui/material';
+import { CircularProgress, Dialog, IconButton, Stack } from '@mui/material';
 import { Inputs, RsvpForm } from '@components/RsvpForm/RsvpForm';
 import { SubmitHandler } from 'react-hook-form';
 import { db } from '@/firebase/config';
@@ -16,6 +16,8 @@ import { fromPromise } from 'xstate';
 import { GetGuestsInput, GetGuestsOutput } from './types';
 import { GuestDetailsForm } from '@components/GuestDetailsForm/GuestDetailsForm';
 import { GuestDetailsReview } from '@components/GuestDetailsReview/GuestDetailsReview';
+import CloseIcon from '@mui/icons-material/Close';
+import { RsvpError } from '@components/RsvpError/RsvpError';
 
 interface RsvpDialogProps {
   isOpen: boolean;
@@ -112,11 +114,28 @@ export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
 
   return (
     <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth='md'>
+      <IconButton
+        edge='end'
+        color='inherit'
+        onClick={onClose}
+        sx={{ position: 'absolute', top: 10, right: 20 }}
+      >
+        <CloseIcon />
+      </IconButton>
+
       {state.matches('codeInputForm') && (
         <RsvpForm onSubmit={handleCodeSubmit} />
       )}
       {(state.matches('getGuests') || state.matches('upsertGuestDetails')) && (
-        <div>Loading...</div>
+        <Stack
+          sx={{
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <CircularProgress color='secondary' />
+        </Stack>
       )}
       {state.matches('gatherGuestDetails') && (
         <GuestDetailsForm
@@ -126,6 +145,16 @@ export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
       )}
       {state.matches('success') && (
         <GuestDetailsReview code={state.context.code || ''} />
+      )}
+      {state.matches('error') && (
+        <RsvpError
+          onRetry={() => {
+            send({
+              type: 'RETRY_CODE',
+            });
+          }}
+          onClose={onClose}
+        />
       )}
     </Dialog>
   );

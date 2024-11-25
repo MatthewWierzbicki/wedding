@@ -40,8 +40,8 @@ export const GuestDetailsReview = ({ code }: GuestDetailsReviewProps) => {
 
   return (
     <Stack>
-      <Typography variant='h5' color='common.black'>
-        Review your guest details
+      <Typography variant='h5' color='common.black' sx={{ mb: 2 }}>
+        Your RSVP has been processed!
       </Typography>
       {guestDetails.map((guestDetail) => (
         <Stack key={`${guestDetail.firstName}-${guestDetail.lastName}`}>
@@ -49,8 +49,8 @@ export const GuestDetailsReview = ({ code }: GuestDetailsReviewProps) => {
             color='common.black'
             variant='h6'
           >{`${guestDetail.firstName} ${guestDetail.lastName}`}</Typography>
-          <Typography>{`Attending: ${guestDetail.isAttending}`}</Typography>
-          <Typography>{`Dietary Restrictions: ${guestDetail.dietaryRestrictions}`}</Typography>
+          <Typography>{`Attending: ${guestDetail.isAttending ? 'Yes' : 'No'}`}</Typography>
+          <Typography>{`Dietary Restrictions: ${guestDetail.dietaryRestrictions || 'None'}`}</Typography>
         </Stack>
       ))}
     </Stack>

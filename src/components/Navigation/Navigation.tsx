@@ -31,13 +31,13 @@ export const Navigation = () => {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position='fixed'>
       <Toolbar>
         <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
+          size='large'
+          edge='start'
+          color='inherit'
+          aria-label='menu'
           sx={{
             mr: 2,
             transition: 'transform 0.3s',
@@ -55,7 +55,7 @@ export const Navigation = () => {
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>
             <Typography
-              variant="h6"
+              variant='h6'
               sx={{
                 flexGrow: 1,
                 textAlign: 'center',
@@ -66,10 +66,10 @@ export const Navigation = () => {
             </Typography>
             {!isMobile && (
               <IconButton
-                size="large"
-                edge="end"
-                color="inherit"
-                aria-label="close"
+                size='large'
+                edge='end'
+                color='inherit'
+                aria-label='close'
                 onClick={handleClose}
               >
                 <CloseIcon />
@@ -78,9 +78,7 @@ export const Navigation = () => {
           </Toolbar>
           <List>
             <ListItem>
-              <ListItemButton onClick={handleHomeClick}>
-                Home
-              </ListItemButton>
+              <ListItemButton onClick={handleHomeClick}>Home</ListItemButton>
             </ListItem>
           </List>
         </Drawer>

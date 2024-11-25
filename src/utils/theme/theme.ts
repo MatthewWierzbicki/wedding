@@ -36,6 +36,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: ['Montserrat', 'sans-serif'].join(','),
+          textTransform: 'capitalize',
         },
       },
     },
