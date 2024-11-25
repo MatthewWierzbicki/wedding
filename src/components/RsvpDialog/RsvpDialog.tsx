@@ -14,7 +14,8 @@ import {
 } from './types';
 import { fromPromise } from 'xstate';
 import { GetGuestsInput, GetGuestsOutput } from './types';
-import { GuestDetailsForm } from '../GuestDetailsForm/GuestDetailsForm';
+import { GuestDetailsForm } from '@components/GuestDetailsForm/GuestDetailsForm';
+import { GuestDetailsReview } from '@components/GuestDetailsReview/GuestDetailsReview';
 
 interface RsvpDialogProps {
   isOpen: boolean;
@@ -123,7 +124,9 @@ export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
           onSubmit={handleGuestDetailsSubmit}
         />
       )}
-      {state.matches('success') && <div>Success!</div>}
+      {state.matches('success') && (
+        <GuestDetailsReview code={state.context.code || ''} />
+      )}
     </Dialog>
   );
 };
