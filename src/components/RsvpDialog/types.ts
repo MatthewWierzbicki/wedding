@@ -18,3 +18,12 @@ export type GetGuestsInput = {
 export type GetGuestsOutput = {
   guests: Guest[];
 };
+
+export type UpsertGuestDetailsInput = {
+  code: string;
+  guestDetails: GuestDetails[];
+};
+
+export type UpsertGuestDetailsOutput = {
+  success: boolean;
+};

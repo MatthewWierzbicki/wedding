@@ -1,5 +1,12 @@
 import { assign, type PromiseActorLogic, setup } from 'xstate';
-import { Guest, GuestDetails, GetGuestsInput, GetGuestsOutput } from './types';
+import {
+  Guest,
+  GuestDetails,
+  GetGuestsInput,
+  GetGuestsOutput,
+  UpsertGuestDetailsOutput,
+  UpsertGuestDetailsInput,
+} from './types';
 
 // Types
 interface RsvpContext {
@@ -31,6 +38,10 @@ type RsvpInput = {
 
 type RsvpActors = {
   getGuests: PromiseActorLogic<GetGuestsOutput, GetGuestsInput>;
+  upsertGuestDetails: PromiseActorLogic<
+    UpsertGuestDetailsOutput,
+    UpsertGuestDetailsInput
+  >;
 };
 
 export const rsvpMachine = setup({
@@ -79,10 +90,25 @@ export const rsvpMachine = setup({
     gatherGuestDetails: {
       on: {
         SUBMIT_GUEST_DETAILS: {
-          target: 'success',
+          target: 'upsertGuestDetails',
           actions: assign({
             guestDetails: ({ event }) => event.data.guestDetails,
           }),
+        },
+      },
+    },
+    upsertGuestDetails: {
+      invoke: {
+        src: 'upsertGuestDetails',
+        input: ({ context }) => ({
+          code: context.code!,
+          guestDetails: context.guestDetails!,
+        }),
+        onDone: {
+          target: 'success',
+        },
+        onError: {
+          target: 'error',
         },
       },
     },

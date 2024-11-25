@@ -3,10 +3,15 @@ import { Dialog } from '@mui/material';
 import { Inputs, RsvpForm } from '@components/RsvpForm/RsvpForm';
 import { SubmitHandler } from 'react-hook-form';
 import { db } from '@/firebase/config';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { rsvpMachine } from './rsvpMachine';
 import { useMachine } from '@xstate/react';
-import { Guest, GuestDetails } from './types';
+import {
+  Guest,
+  GuestDetails,
+  UpsertGuestDetailsInput,
+  UpsertGuestDetailsOutput,
+} from './types';
 import { fromPromise } from 'xstate';
 import { GetGuestsInput, GetGuestsOutput } from './types';
 import { GuestDetailsForm } from '../GuestDetailsForm/GuestDetailsForm';
@@ -15,6 +20,8 @@ interface RsvpDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const INDEX_TO_GUEST_KEY = ['One', 'Two', 'Three', 'Four'];
 
 export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
   const [state, send] = useMachine(
@@ -51,6 +58,32 @@ export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
             }
           },
         ),
+        upsertGuestDetails: fromPromise(
+          async ({
+            input,
+          }: {
+            input: UpsertGuestDetailsInput;
+          }): Promise<UpsertGuestDetailsOutput> => {
+            // Add document to firestore if it doesn't exist
+            // Update document if it does
+            try {
+              const rsvpRef = collection(db, 'rsvps');
+              const upsertDetails = input.guestDetails.reduce(
+                (acc, guestDetail, idx) => {
+                  acc[`guest${INDEX_TO_GUEST_KEY[idx]}`] = guestDetail;
+                  return acc;
+                },
+                {} as Record<string, GuestDetails>,
+              );
+              console.log(upsertDetails);
+              await setDoc(doc(rsvpRef, input.code), upsertDetails);
+              return { success: true };
+            } catch (error) {
+              console.error('Error upserting guest details:', error);
+              throw error;
+            }
+          },
+        ),
       },
     }),
     {
@@ -81,13 +114,16 @@ export const RsvpDialog = ({ isOpen, onClose }: RsvpDialogProps) => {
       {state.matches('codeInputForm') && (
         <RsvpForm onSubmit={handleCodeSubmit} />
       )}
-      {state.matches('getGuests') && <div>Loading...</div>}
+      {(state.matches('getGuests') || state.matches('upsertGuestDetails')) && (
+        <div>Loading...</div>
+      )}
       {state.matches('gatherGuestDetails') && (
         <GuestDetailsForm
           guests={state.context.guests}
           onSubmit={handleGuestDetailsSubmit}
         />
       )}
+      {state.matches('success') && <div>Success!</div>}
     </Dialog>
   );
 };
