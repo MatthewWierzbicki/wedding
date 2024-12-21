@@ -29,6 +29,7 @@ export const Rsvp = () => {
     <Box
       id='rsvp-section'
       sx={{
+        mt: '1000px',
         width: 'calc(100vw - (100vw - 100%))',
         height: '900px',
         background: `url(${Sylvia})`,

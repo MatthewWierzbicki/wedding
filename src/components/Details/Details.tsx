@@ -1,40 +1,175 @@
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import Barn from '@assets/barn.png';
+import Heart from '@assets/heart.svg';
+import { useIsMobile } from '@/utils/hooks/useIsMobile';
 
 interface DetailsProps {
   detailsRef: React.RefObject<HTMLDivElement>;
 }
 export const Details = ({ detailsRef }: DetailsProps) => {
+  const isMobile = useIsMobile();
   return (
-    <Stack ref={detailsRef} sx={{ backgroundColor: '#f5ebe0', p: 6, gap: 4 }}>
-      <Typography variant='h4' sx={{ color: 'black' }}>
-        The Details
+    <Box sx={{ width: '100%' }}>
+      <Stack
+        ref={detailsRef}
+        direction='row'
+        sx={{
+          justifyContent: 'space-evenly',
+          p: isMobile ? 4 : 8,
+        }}
+      >
+        <Stack direction='column'>
+          <Typography variant='h3' sx={{ mb: 2, pt: '45px' }}>
+            The Deets
+          </Typography>
+
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Where
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            Century Barn
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            400 Stewart Line - Cavan,
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat', mb: 2 }}>
+            Ontario
+          </Typography>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            When
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            Ceremony: 4:30 pm
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            Dinner and Dancing: 6 pm
+          </Typography>
+        </Stack>
+        <Box
+          component='img'
+          src={Barn}
+          sx={{ width: 600, height: 400, mr: '-46px' }}
+        />
+      </Stack>
+
+      <Typography
+        variant='h4'
+        sx={{
+          fontWeight: 700,
+          textAlign: 'center',
+          width: '100%',
+          mb: 2,
+        }}
+      >
+        June 2026
       </Typography>
-      <Typography variant='body1'>
-        Skate ipsum dolor sit amet, smith grind nosegrind pool nosepicker
-        backside. Gap disaster kickflip rail deck. Kevin Harris downhill slappy
-        boardslide camel back. Indy grab hand rail 360 half-flip alley oop.
-        Pressure flip casper slide invert pump nose-bump Vision. Alley oop
-        stalefish switch helipop carve. Cess slide pivot gap bone air ledge. 360
-        nose slide wall ride backside sponsored. Concave nose-bump Geoff Rowley
-        boneless hospital flip axle set. Mute-air grind nosebone finger flip
-        helipop. Lipslide frigid air kickflip regular footed crooked grind. Hard
-        flip The Wedge cab flip slob air melancholy tuna-flip. Slappy gnarly
-        Jordan Richter crail slide 270 ho-ho. 720 coping blunt 540 180.
-        Noseblunt slide gnarly nosegrind skater transition.
-      </Typography>
-      <Typography variant='body1'>
-        Death box boned out switch goofy footed betty. Street gnarly stalefish
-        egg plant casper. Stoked pressure flip skate or die cess slide street.
-        Plan B kidney 360 flail lipslide trucks. Rails risers pop shove-it rock
-        and roll hang-up. Casper durometer birdie darkslide death box.
-        Nosepicker drop in judo air gap downhill. Berm hurricane rocket air lip
-        Vision hand rail. Tuna-flip berm birdie gnar bucket coper. Boneless bone
-        air alley oop yeah judo air. Risers boardslide Hugh Bod Boyle nosepicker
-        trucks fakie. Hand rail salad grind Tim May snake no comply egg plant.
-        Steps drop in mute-air lipslide bruised heel. Pivot indy grab salad
-        grind 900 goofy footed. Dude Steve Olson slap maxwell crail grab judo
-        air kidney. Air nose slide varial melancholy salad grind.
-      </Typography>
-    </Stack>
+      <Stack
+        direction='row'
+        sx={{ justifyContent: 'space-around', width: '600px', mx: 'auto' }}
+      >
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Sun
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            14
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Mon
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            15
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Tue
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            16
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Wed
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            17
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Thu
+          </Typography>
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            18
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Fri
+          </Typography>
+
+          <Typography variant='h6' sx={{ fontFamily: 'Montserrat' }}>
+            19
+          </Typography>
+        </Stack>
+        <Stack direction='column' gap={2} sx={{ alignItems: 'center' }}>
+          <Typography
+            variant='h6'
+            sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+          >
+            Sat
+          </Typography>
+          <Box sx={{ position: 'relative' }}>
+            <Box
+              component='img'
+              src={Heart}
+              sx={{
+                position: 'absolute',
+                width: 60,
+                height: 60,
+                right: -19,
+                bottom: -14,
+              }}
+            />
+            <Typography
+              variant='h6'
+              sx={{
+                fontFamily: 'Montserrat',
+              }}
+            >
+              20
+            </Typography>
+          </Box>
+        </Stack>
+      </Stack>
+    </Box>
   );
 };

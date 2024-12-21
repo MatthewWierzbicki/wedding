@@ -25,7 +25,6 @@ export const Introduction = () => {
   };
 
   const currentRoute = routesMap[location.pathname as keyof typeof routesMap];
-  console.log(currentRoute);
   return (
     <Stack
       sx={{
@@ -33,6 +32,7 @@ export const Introduction = () => {
         justifyContent: 'center',
         alignItems: 'center',
         px: isMobile ? 4 : 8,
+        mb: 4,
         backgroundColor: 'background.default',
       }}
     >

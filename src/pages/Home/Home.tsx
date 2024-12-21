@@ -4,6 +4,8 @@ import { Details } from '@components/Details/Details';
 import { Introduction } from '@components/Introduction/Introduction';
 import { Accommodations } from '@components/Accommodations/Accommodations';
 import { Rsvp } from '@components/Rsvp/Rsvp';
+import { SmallGallery } from '@components/SmallGallery/SmallGallery';
+
 export const Home = () => {
   const detailsRef = useRef<HTMLDivElement>(null);
   return (
@@ -20,8 +22,9 @@ export const Home = () => {
       >
         <Introduction />
         <Details detailsRef={detailsRef} />
-        <Rsvp />
-        <Accommodations />
+        <SmallGallery />
+        {/* <Rsvp />
+        <Accommodations /> */}
       </Stack>
     </>
   );
