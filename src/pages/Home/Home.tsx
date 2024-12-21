@@ -14,9 +14,11 @@ export const Home = () => {
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundColor: 'background.default',
+          py: 8,
         }}
       >
-        <Introduction detailsRef={detailsRef} />
+        <Introduction />
         <Details detailsRef={detailsRef} />
         <Rsvp />
         <Accommodations />

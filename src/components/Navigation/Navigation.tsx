@@ -35,22 +35,22 @@ export const Navigation = () => {
       <Toolbar>
         <IconButton
           size='large'
-          edge='start'
+          edge='end'
           color='inherit'
           aria-label='menu'
           sx={{
-            mr: 2,
             transition: 'transform 0.3s',
             transform: drawerOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+            ml: 'auto',
           }}
           onClick={handleMenuClick}
         >
-          <MenuIcon />
+          <MenuIcon sx={{ fontSize: '2.5rem' }} />
         </IconButton>
         <Drawer
           open={drawerOpen}
           onClose={handleClose}
-          anchor={isMobile ? 'bottom' : 'left'}
+          anchor={isMobile ? 'bottom' : 'right'}
           sx={isMobile ? { borderRadius: 10 } : undefined}
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>

@@ -1,86 +1,88 @@
 import React from 'react';
 
-import { Box, IconButton, Stack, Typography } from '@mui/material';
-import SayYes from '@assets/say-yes.jpeg';
+import { Box, Link, Stack, Typography } from '@mui/material';
+import EngageSnow from '@assets/engage-snow.jpg';
 import { useIsMobile } from '@utils/hooks/useIsMobile';
-import Cat from '@assets/cat.svg';
-import ArrowDown from '@assets/arrow-down.svg';
-import { Clouds } from '@components/Clouds/Clouds';
-interface IntroductionProps {
-  detailsRef: React.RefObject<HTMLDivElement>;
-}
+import { routes } from '@/utils/constants/routes';
+import { useLocation } from 'react-router-dom';
 
-export const Introduction = ({ detailsRef }: IntroductionProps) => {
+export const Introduction = () => {
   const isMobile = useIsMobile();
+  const location = useLocation();
+  const daysUntilWedding = Math.ceil(
+    (new Date('2026-06-20').getTime() - new Date().getTime()) /
+      (1000 * 60 * 60 * 24),
+  );
 
-  const handleScrollToAccommodations = () => {
-    detailsRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+  const routesMap = {
+    [routes.home]: 'home',
+    [routes.ourStory]: 'our story',
+    [routes.rsvp]: 'rsvp',
+    [routes.photos]: 'photos',
+    [routes.registry]: 'registry',
+    [routes.faq]: 'faq',
+    [routes.weddingParty]: 'wedding party',
   };
 
+  const currentRoute = routesMap[location.pathname as keyof typeof routesMap];
+  console.log(currentRoute);
   return (
-    <Box
+    <Stack
       sx={{
-        width: 'calc(100vw - (100vw - 100%))',
-        height: '900px',
-        background: `url(${SayYes})`,
-        backgroundSize: 'cover',
-        backgroundPosition: isMobile ? '-150px center' : 'center',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        px: isMobile ? 4 : 8,
+        backgroundColor: 'background.default',
       }}
     >
-      <Stack
-        sx={{
-          height: '100%',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+      <Typography
+        variant={isMobile ? 'h5' : 'h3'}
+        sx={{ fontFamily: 'Montserrat' }}
       >
-        <Typography variant={isMobile ? 'h6' : 'h5'}>06.20.26</Typography>
-        <Box sx={{ position: 'relative' }}>
-          <Box
-            component='img'
-            src={Cat}
-            alt='cat'
-            width={isMobile ? 60 : 110}
-            height={isMobile ? 60 : 110}
-            sx={{
-              position: 'absolute',
-              bottom: isMobile ? 17 : 41,
-              right: isMobile ? 42 : 88,
-            }}
-          />
-          <Typography variant={isMobile ? 'h3' : 'h1'}>
-            Matt + Sylvia
-          </Typography>
-        </Box>
-
-        <IconButton
-          onClick={handleScrollToAccommodations}
-          sx={{
-            position: 'absolute',
-            bottom: 20,
-            animation: 'shake 0.5s 0.5s forwards',
-            '@keyframes shake': {
-              '0%': { transform: 'rotate(0deg)' },
-              '25%': { transform: 'rotate(-10deg)' },
-              '50%': { transform: 'rotate(10deg)' },
-              '75%': { transform: 'rotate(-10deg)' },
-              '100%': { transform: 'rotate(0deg)' },
-            },
-          }}
+        06.20.26
+      </Typography>
+      <Typography
+        variant={isMobile ? 'h6' : 'h5'}
+        sx={{ fontFamily: 'Montserrat', color: 'secondary.main' }}
+      >
+        <strong>{daysUntilWedding}</strong> days to go
+      </Typography>
+      <Typography variant={isMobile ? 'h4' : 'h1'}>Sylvia + Matt</Typography>
+      {!isMobile && (
+        <Stack
+          direction='row'
+          spacing={2}
+          width='100%'
+          justifyContent='space-between'
+          my={2}
         >
-          <Box
-            component='img'
-            src={ArrowDown}
-            alt='arrowDown'
-            width={100}
-            height={100}
-          />
-        </IconButton>
-        <Clouds />
-      </Stack>
-    </Box>
+          {Object.entries(routesMap).map(([route, routeName]) => (
+            <Link
+              key={route} // Added key prop for list items
+              variant='h6'
+              href={route}
+              sx={{
+                ...(currentRoute === routeName && {
+                  textDecoration: 'underline',
+                  textDecorationColor: '#a43424',
+                  textUnderlineOffset: '10px',
+                  color: '#a43424',
+                  fontWeight: '700',
+                }),
+              }}
+            >
+              {routeName}
+            </Link>
+          ))}
+        </Stack>
+      )}
+      <Box
+        component='img'
+        sx={{ width: '100%' }}
+        src={EngageSnow}
+        alt='engage-snow'
+      />
+    </Stack>
   );
 };

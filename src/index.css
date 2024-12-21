@@ -14,3 +14,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+@font-face {
+  font-family: 'Candice';
+  src: url('./fonts/CANDY.eot') format('eot'),
+    url('./fonts/CANDY.woff') format('woff'),
+    url('./fonts/CANDY.ttf') format('truetype'),
+    url('./fonts/CANDY.svg#Candice') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
