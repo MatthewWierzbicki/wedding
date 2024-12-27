@@ -11,6 +11,10 @@ export const theme = createTheme({
     background: {
       default: '#f5e8d8', // Set default paper background color
     },
+    text: {
+      primary: '#c86b46',
+      secondary: '#f5e8d8',
+    },
   },
   components: {
     MuiLink: {
