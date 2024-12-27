@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, IconButton } from '@mui/material';
 import Sylvia from '@assets/sylvia.png';
 import { useIsMobile } from '@utils/hooks/useIsMobile';

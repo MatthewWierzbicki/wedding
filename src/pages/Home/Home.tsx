@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Stack } from '@mui/material';
 import { Details } from '@components/Details/Details';
 import { Introduction } from '@components/Introduction/Introduction';

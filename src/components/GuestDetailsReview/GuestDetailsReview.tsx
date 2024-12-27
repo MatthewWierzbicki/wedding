@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { db } from '@/firebase/config';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
