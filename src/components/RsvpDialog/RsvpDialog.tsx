@@ -1,4 +1,3 @@
-import React from 'react';
 import { CircularProgress, Dialog, IconButton, Stack } from '@mui/material';
 import { Inputs, RsvpForm } from '@components/RsvpForm/RsvpForm';
 import { SubmitHandler } from 'react-hook-form';

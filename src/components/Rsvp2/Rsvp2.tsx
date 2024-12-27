@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Invite from '@assets/invite.svg';
 import Cat from '@assets/cat.svg';

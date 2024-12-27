@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stack, Typography, Box } from '@mui/material';
 import Carousel9 from '@assets/carousel-9.jpg';
 import { useIsMobile } from '@/utils/hooks/useIsMobile';

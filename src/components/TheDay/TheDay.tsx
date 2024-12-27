@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Car from '@assets/car.svg';
 import Ring from '@assets/ring.svg';

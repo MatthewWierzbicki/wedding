@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, IconButton } from '@mui/material';
 import Carousel1 from '@assets/carousel-1.jpg';
 import Carousel2 from '@assets/carousel-2.jpg';

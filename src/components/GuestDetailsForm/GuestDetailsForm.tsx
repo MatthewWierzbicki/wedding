@@ -1,4 +1,3 @@
-import React from 'react';
 import { Guest, GuestDetails } from '@components/RsvpDialog/types';
 import {
   Stack,

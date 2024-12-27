@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import { theme } from '@utils/theme/theme';
 import { Router } from '@components/Router/Router';

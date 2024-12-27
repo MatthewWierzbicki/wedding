@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box, Link, Stack, Typography } from '@mui/material';
 import EngageSnow from '@assets/engage-snow.jpg';
 import { useIsMobile } from '@utils/hooks/useIsMobile';
