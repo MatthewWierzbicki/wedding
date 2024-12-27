@@ -7,7 +7,7 @@ import { RsvpDialog } from '../RsvpDialog/RsvpDialog';
 
 export const Rsvp = () => {
   const isMobile = useIsMobile();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleScroll = () => {
     const scrollPosition = window.scrollY;

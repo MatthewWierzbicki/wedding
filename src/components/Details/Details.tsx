@@ -12,10 +12,11 @@ export const Details = ({ detailsRef }: DetailsProps) => {
     <Box sx={{ width: '100%' }}>
       <Stack
         ref={detailsRef}
-        direction='row'
+        direction={isMobile ? 'column' : 'row'}
         sx={{
           justifyContent: 'space-evenly',
           p: isMobile ? 4 : 8,
+          alignItems: isMobile ? 'center' : 'flex-start',
         }}
       >
         <Stack direction='column'>

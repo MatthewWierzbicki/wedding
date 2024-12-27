@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import { Stack } from '@mui/material';
 import { Details } from '@components/Details/Details';
 import { Introduction } from '@components/Introduction/Introduction';
-import { Accommodations } from '@components/Accommodations/Accommodations';
-import { Rsvp } from '@components/Rsvp/Rsvp';
 import { SmallGallery } from '@components/SmallGallery/SmallGallery';
-
+import { OurStory } from '@components/OurStory/OurStory';
+import { TheDay } from '@components/TheDay/TheDay';
 export const Home = () => {
   const detailsRef = useRef<HTMLDivElement>(null);
   return (
@@ -23,8 +22,8 @@ export const Home = () => {
         <Introduction />
         <Details detailsRef={detailsRef} />
         <SmallGallery />
-        {/* <Rsvp />
-        <Accommodations /> */}
+        <OurStory />
+        <TheDay />
       </Stack>
     </>
   );
