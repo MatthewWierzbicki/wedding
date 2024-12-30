@@ -13,12 +13,16 @@ export const TheDay = () => {
         direction='column'
         spacing={2}
         sx={{
-          mx: isMobile ? 4 : 8,
+          p: isMobile ? 4 : 8,
           minHeight: '100%',
+          bgcolor: 'primary.main',
           position: 'relative',
         }}
       >
-        <Typography variant='h2' sx={{ textAlign: 'center' }}>
+        <Typography
+          variant='h2'
+          sx={{ textAlign: 'center', color: 'text.secondary' }}
+        >
           The Day
         </Typography>
 
@@ -40,7 +44,7 @@ export const TheDay = () => {
                 sx={{
                   position: 'absolute',
                   borderTop: '5px dotted',
-                  borderColor: '#c86b46',
+                  borderColor: '#f5e8d8',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   width: '100%',
@@ -51,7 +55,7 @@ export const TheDay = () => {
               <Stack
                 direction='row'
                 sx={{
-                  bgcolor: 'background.default',
+                  bgcolor: 'primary.main',
                   position: 'relative',
                   zIndex: 2,
                 }}
@@ -65,11 +69,18 @@ export const TheDay = () => {
                 >
                   <Typography
                     variant='h5'
-                    sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+                    sx={{
+                      fontFamily: 'Montserrat',
+                      fontWeight: 700,
+                      color: 'text.secondary',
+                    }}
                   >
                     4:30 PM
                   </Typography>
-                  <Typography variant='h5' sx={{ fontFamily: 'Montserrat' }}>
+                  <Typography
+                    variant='h5'
+                    sx={{ fontFamily: 'Montserrat', color: 'text.secondary' }}
+                  >
                     Ceremony
                   </Typography>
                 </Stack>
@@ -90,7 +101,7 @@ export const TheDay = () => {
                 sx={{
                   position: 'absolute',
                   borderTop: '5px dotted',
-                  borderColor: '#c86b46',
+                  borderColor: '#f5e8d8',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   width: '100%',
@@ -101,7 +112,7 @@ export const TheDay = () => {
               <Stack
                 direction='row'
                 sx={{
-                  bgcolor: 'background.default',
+                  bgcolor: 'primary.main',
                   position: 'relative',
                   zIndex: 2,
                 }}
@@ -115,11 +126,18 @@ export const TheDay = () => {
                 >
                   <Typography
                     variant='h5'
-                    sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+                    sx={{
+                      fontFamily: 'Montserrat',
+                      fontWeight: 700,
+                      color: 'text.secondary',
+                    }}
                   >
                     6:00 PM
                   </Typography>
-                  <Typography variant='h5' sx={{ fontFamily: 'Montserrat' }}>
+                  <Typography
+                    variant='h5'
+                    sx={{ fontFamily: 'Montserrat', color: 'text.secondary' }}
+                  >
                     Dinner and Dancing
                   </Typography>
                 </Stack>
@@ -138,7 +156,7 @@ export const TheDay = () => {
           <Box
             sx={{
               borderLeft: '5px dotted',
-              borderColor: '#c86b46',
+              borderColor: '#f5e8d8',
               ml: '10px',
             }}
           />
@@ -156,7 +174,7 @@ export const TheDay = () => {
                 sx={{
                   position: 'absolute',
                   borderTop: '5px dotted',
-                  borderColor: '#c86b46',
+                  borderColor: '#f5e8d8',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   width: '100%',
@@ -167,7 +185,7 @@ export const TheDay = () => {
               <Stack
                 direction='row'
                 sx={{
-                  bgcolor: 'background.default',
+                  bgcolor: 'primary.main',
                   position: 'relative',
                   zIndex: 2,
                 }}
@@ -182,11 +200,18 @@ export const TheDay = () => {
                 >
                   <Typography
                     variant='h5'
-                    sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+                    sx={{
+                      fontFamily: 'Montserrat',
+                      fontWeight: 700,
+                      color: 'text.secondary',
+                    }}
                   >
                     4:00 PM
                   </Typography>
-                  <Typography variant='h5' sx={{ fontFamily: 'Montserrat' }}>
+                  <Typography
+                    variant='h5'
+                    sx={{ fontFamily: 'Montserrat', color: 'text.secondary' }}
+                  >
                     Arrive to the venue
                   </Typography>
                 </Stack>
@@ -211,7 +236,7 @@ export const TheDay = () => {
                 sx={{
                   position: 'absolute',
                   borderTop: '5px dotted',
-                  borderColor: '#c86b46',
+                  borderColor: '#f5e8d8',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   width: '100%',
@@ -222,7 +247,7 @@ export const TheDay = () => {
               <Stack
                 direction='row'
                 sx={{
-                  bgcolor: 'background.default',
+                  bgcolor: 'primary.main',
                   position: 'relative',
                   zIndex: 2,
                 }}
@@ -237,11 +262,18 @@ export const TheDay = () => {
                 >
                   <Typography
                     variant='h5'
-                    sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
+                    sx={{
+                      fontFamily: 'Montserrat',
+                      fontWeight: 700,
+                      color: 'text.secondary',
+                    }}
                   >
                     5:00 PM
                   </Typography>
-                  <Typography variant='h5' sx={{ fontFamily: 'Montserrat' }}>
+                  <Typography
+                    variant='h5'
+                    sx={{ fontFamily: 'Montserrat', color: 'text.secondary' }}
+                  >
                     Cocktail Hour
                   </Typography>
                 </Stack>

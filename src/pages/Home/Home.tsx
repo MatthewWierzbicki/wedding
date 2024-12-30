@@ -8,6 +8,7 @@ import { TheDay } from '@components/TheDay/TheDay';
 import { Rsvp2 } from '@components/Rsvp2/Rsvp2';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '@utils/constants/routes';
+import { Faq } from '@components/Faq/Faq';
 
 export const Home = () => {
   const detailsRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ export const Home = () => {
         <OurStory />
         <TheDay />
         <Rsvp2 onRsvpClick={() => navigate(routes.rsvp)} />
+        <Faq />
       </Stack>
     </>
   );
